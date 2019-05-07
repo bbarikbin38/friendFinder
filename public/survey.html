@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Friend Finder</title>
+</head>
+<body>
+    <div class="container content">
+        <h3>Select your answers to the below questions.</h3>
+
+        <form>
+            <div class="form-group">
+                <input id="name" type="text" class="form-control" placeholder="Name">
+            </div>
+
+            <div class="form-group">
+                <label for="question1">I prefer to cook rather than eat out:</label>
+                <select class="form-control" id="question1">
+                    <!-- setting value to start empty and then the 5 options-->
+                    <option value="empty"></option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="question2">I prefer to hike rather than swim:</label>
+                <select class="form-control" id="question2">
+                    <option value="empty"></option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="question3">I am conscious of my eating habits:</label>
+                <select class="form-control" id="question3">
+                    <option value="empty"></option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="question4">I enjoy working out:</label>
+                <select class="form-control" id="question4">
+                    <option value="empty"></option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="question5">I read as a hobby.</label>
+                <select class="form-control" id="question5">
+                    <option value="empty"></option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="question6">Auditing or coding?</label>
+                <select class="form-control" id="question6">
+                    <option value="empty"></option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="question7">Philadelphia is the best city to live in:</label>
+                <select class="form-control" id="question7">
+                    <option value="empty"></option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="question8">I prefer hot weather:</label>
+                <select class="form-control" id="question8">
+                    <option value="empty"></option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="question9">I prefer cold weather:</label>
+                <select class="form-control" id="question9">
+                    <option value="empty"></option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="question10">I am self-driven:</label>
+                <select class="form-control" id="question10">
+                    <option value="empty"></option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+        </form>
+        <div class="text-center">
+            <button id="enter" type="submit" class="btn btn-primary submit">Enter</button>
+        </div>
+</body>
+
+<footer>
+    <div class="container">
+        <a href="/public/home.html">Homepage</a>
+    </div>
+</footer>
+
+</html>
+
+<script type="text/javascript">
+    var app = express();
+    $("#enter").on("click", function (event) {
+        event.preventDefault();
+
+        var newFriend = {
+            name: $("#name").val().trim(),
+            scores: [
+                $("#question1").val(),
+                $("#question2").val(),
+                $("#question3").val(),
+                $("#question4").val(),
+                $("#question5").val(),
+                $("#question6").val(),
+                $("#question7").val(),
+                $("#question8").val(),
+                $("#question9").val(),
+                $("#question10").val()
+            ]
+        };
+
+        // cant get this to push the new friend to the friends file
+        app.post("/Users/bijanbarikbin/upenn/Homework2/FriendFinder/app/data/friends.js", newFriend)
+            .then(function (friends) {
+                console.log(friends);
+                alert("Adding information");
+            });
+
+    });
+
+</script>
